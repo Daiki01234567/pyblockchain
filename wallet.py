@@ -10,12 +10,11 @@ import utils
 
 
 class Wallet(object):
-    
     def __init__(self):
         self._private_key = SigningKey.generate(curve=NIST256p)
         self._public_key = self._private_key.get_verifying_key()
         self._blockchain_address = self.generate_blockchain_address()
-    
+
     @property
     def private_key(self):
         return self._private_key.to_string().hex()
@@ -55,10 +54,8 @@ class Wallet(object):
         # 8
         blockchain_address = base58.b58encode(binascii.unhexlify(address_hex)).decode('utf-8')
         return blockchain_address
-    
 
 class Transaction(object):
-    
     def __init__(self, sender_private_key, sender_public_key,
                 sender_blockchain_address, recipient_blockchain_address,
                 value):
@@ -83,8 +80,6 @@ class Transaction(object):
         private_key_sign = private_key.sign(message)
         signature = private_key_sign.hex()
         return signature
-    
-    
 
 if __name__ == '__main__':
     wallet_M = Wallet()
@@ -92,7 +87,7 @@ if __name__ == '__main__':
     wallet_B = Wallet()
     t = Transaction(wallet_A.private_key, wallet_A.public_key, wallet_A.blockchain_address,
                     wallet_B.blockchain_address, 1.0)
-    
+
     ############# Blcokchain Node
     import blockchain
     blockchain = blockchain.BlockChain(
@@ -107,6 +102,6 @@ if __name__ == '__main__':
     print('Added?', is_added)
     blockchain.mining()
     utils.pprint(blockchain.chain)
-    
+
     print('A', blockchain.calculate_total_amount(wallet_A.blockchain_address))
     print('B', blockchain.calculate_total_amount(wallet_B.blockchain_address))
