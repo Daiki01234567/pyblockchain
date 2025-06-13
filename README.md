@@ -1,17 +1,3 @@
-背景
-
-GitHubに就活用のポートフォリオとして公開する。
-
-udemyで仮想通貨の送金システムを作成。[https://www.udemy.com/course/python-blockchain/](https://www.udemy.com/course/python-blockchain/?couponCode=KEEPLEARNING)
-
-学んだことをREADMEにまとめる。
-
-目標
-
-ポートフォリオとして評価される。分かりやすい。
-
-以下現状の文章。
-
 # 仮想通貨の送金システム
 
 ## 背景
